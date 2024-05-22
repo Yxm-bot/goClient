@@ -57,45 +57,31 @@ export namespace NewGateMgr {
         // checkReady(sender)
     }
 
-    export function httpRequest(){
-        // 发送 POST 请求
-        let postData = {
-            username: 'example',
-            password: '123456'
-        };
-        console.log("postData===",postData)
+    export function httpRequest() {
+        // 发送预检请求
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://127.0.0.1:8080/Login');
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    let response = JSON.parse(xhr.responseText);
-                    console.log(response);
-                } else {
-                    console.error(xhr.statusText);
-                }
-            }
+        // 发送实际请求
+        let postData = {
+            username: 'elk',
+            password: '123456789'
         };
-        xhr.send(JSON.stringify(postData));
-        console.log("JSON.stringify(postData)===",JSON.stringify(postData))
 
-        // 发送 GET 请求
-/*         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://example.com/api/user?id=123456');
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    let response = JSON.parse(xhr.responseText);
+        let xhr2 = new XMLHttpRequest();
+        xhr2.open('POST', 'http://127.0.0.1:8080/login');
+        xhr2.setRequestHeader('Content-Type', 'application/json');
+        xhr2.onreadystatechange = () => {
+            if (xhr2.readyState === 4) {
+                if (xhr2.status === 200) {
+                    let response = JSON.parse(xhr2.responseText);
                     console.log(response);
                 } else {
-                    console.error(xhr.statusText);
+                    console.error(xhr2.statusText);
                 }
             }
         };
-        xhr.send(); */
+        xhr2.send(JSON.stringify(postData));
+        
     }
-
     function _encodePacket(name, packet) {
         // cc.log("====_encodePacter111================")
         let p = _findProto(name)//proto[name]
