@@ -57,17 +57,14 @@ export namespace NewGateMgr {
         // checkReady(sender)
     }
 
-    export function httpRequest() {
+    export function httpRequest(data,url) {
         // 发送预检请求
         let xhr = new XMLHttpRequest();
         // 发送实际请求
-        let postData = {
-            username: 'elk',
-            password: '123456789'
-        };
+        let postData = data;
 
         let xhr2 = new XMLHttpRequest();
-        xhr2.open('POST', 'http://127.0.0.1:8080/login');
+        xhr2.open('POST', url);
         xhr2.setRequestHeader('Content-Type', 'application/json');
         xhr2.onreadystatechange = () => {
             if (xhr2.readyState === 4) {

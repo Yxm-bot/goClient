@@ -13,5 +13,9 @@ export default class Helloworld extends cc.Component {
        EventMgr.dispatchEvent("login")
     }
 
+    clickSend1(){
+        EventMgr.dispatchEvent("resgiter")
+     }
+
 
 }
